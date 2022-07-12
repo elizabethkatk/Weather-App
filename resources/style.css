@@ -23,8 +23,8 @@ h6 {
 }
 
 a {
-  text-decoration: none;
   color: darkslategray;
+  text-decoration: none;
 }
 
 .container {
@@ -95,6 +95,10 @@ a {
   text-align: center;
 }
 
+.footer {
+  font-size: 12px;
+}
+
 #celsius:hover {
   cursor: pointer;
   color: darkslategray;
@@ -112,4 +116,10 @@ a {
 #low-temp {
   padding: 0;
   border-left: 2px solid black;
+}
+
+#code-link {
+  text-decoration: underline;
+  color: blue;
+  font-size: 12px;
 }
