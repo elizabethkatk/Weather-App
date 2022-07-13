@@ -129,4 +129,6 @@ a {
 }
 
 #current {
+  position: relative;
+  left: 35px;
 }
