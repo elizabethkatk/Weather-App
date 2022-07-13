@@ -80,7 +80,12 @@ function showTemp(response) {
   temperature.innerHTML = Math.round(response.data.main.temp);
   let currentCity = document.querySelector("h1");
   currentCity.innerHTML = response.data.name;
-  let description = document.querySelector("h3");
+  let mainIcon = document.querySelector(".main-icon");
+  mainIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let description = document.querySelector(".description");
   description.innerHTML = response.data.weather[0].main;
   let windSpeed = document.querySelector(".wind-speed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
