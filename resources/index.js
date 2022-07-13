@@ -62,6 +62,9 @@ if (minutes < 10) {
 
 // Location Search
 
+let form = document.querySelector("#location-search");
+form.addEventListener("submit", searchLocale);
+
 function searchLocale(event) {
   event.preventDefault();
   let location = document.querySelector("#location");
@@ -70,9 +73,6 @@ function searchLocale(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
-
-let form = document.querySelector("#location-search");
-form.addEventListener("submit", searchLocale);
 
 function showTemp(response) {
   let temperature = document.querySelector(".temp");
@@ -94,6 +94,14 @@ function showTemp(response) {
 
 // Current Location
 
+let currentLocation = document.querySelector("button");
+currentLocation.addEventListener("click", findPosition);
+
+function findPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(myPosition);
+}
+
 function myPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -101,10 +109,3 @@ function myPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
-function findPosition(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(myPosition);
-}
-
-let currentLocation = document.querySelector("button");
-currentLocation.addEventListener("click", findPosition);
