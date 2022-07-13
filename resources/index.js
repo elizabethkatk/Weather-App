@@ -62,13 +62,14 @@ if (minutes < 10) {
 
 // Location Search
 
+let apiKey = "e5563a39d3909663bfcb47fa3fa4fa5e";
+
 let form = document.querySelector("#location-search");
 form.addEventListener("submit", searchLocale);
 
 function searchLocale(event) {
   event.preventDefault();
   let location = document.querySelector("#location");
-  let apiKey = "e5563a39d3909663bfcb47fa3fa4fa5e";
   let city = `${location.value}`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
@@ -105,7 +106,6 @@ function findPosition(event) {
 function myPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "e5563a39d3909663bfcb47fa3fa4fa5e";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
