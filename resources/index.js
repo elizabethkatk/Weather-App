@@ -69,11 +69,6 @@ function defaultSearch() {
   axios.get(apiUrl).then(showTemp);
 }
 
-defaultSearch();
-
-let form = document.querySelector("#location-search");
-form.addEventListener("submit", searchLocale);
-
 function searchLocale(event) {
   event.preventDefault();
   let location = document.querySelector("#location");
@@ -83,8 +78,9 @@ function searchLocale(event) {
 }
 
 function showTemp(response) {
+  celsiusTemperature = response.data.main.temp;
   let temperature = document.querySelector(".temp");
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round(celsiusTemperature);
   let currentCity = document.querySelector("h1");
   currentCity.innerHTML = response.data.name;
   let mainIcon = document.querySelector(".main-icon");
@@ -105,11 +101,6 @@ function showTemp(response) {
   console.log(response);
 }
 
-// Current Location
-
-let currentLocation = document.querySelector("button");
-currentLocation.addEventListener("click", findPosition);
-
 function findPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(myPosition);
@@ -121,3 +112,36 @@ function myPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
+
+function showFahrenheit(event) {
+  event.preventDefault();
+  let mainTemp = document.querySelector(".temp");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  mainTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let mainTemp = document.querySelector(".temp");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  mainTemp.innerHTML = Math.round(celsiusTemperature);
+}
+
+let form = document.querySelector("#location-search");
+form.addEventListener("submit", searchLocale);
+
+let currentLocation = document.querySelector("button");
+currentLocation.addEventListener("click", findPosition);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsius);
+
+let celsiusTemperature = null;
+
+defaultSearch();

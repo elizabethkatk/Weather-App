@@ -27,7 +27,6 @@ h6 {
 }
 
 a {
-  color: darkslategray;
   text-decoration: none;
 }
 
@@ -101,6 +100,16 @@ a {
 
 .footer {
   font-size: 12px;
+}
+
+.active {
+  cursor: default;
+  color: darkslategray;
+  text-decoration: none;
+}
+
+.active:hover {
+  color: darkslategray;
 }
 
 #celsius:hover {
