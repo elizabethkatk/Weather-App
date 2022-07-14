@@ -92,6 +92,8 @@ function showTemp(response) {
   );
   let description = document.querySelector(".description");
   description.innerHTML = response.data.weather[0].main;
+  let feelsLike = document.querySelector(".feels-like");
+  feelsLike.innerHTML = Math.round(response.data.main.feels_like);
   let windSpeed = document.querySelector(".wind-speed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   let humidity = document.querySelector(".humidity");
