@@ -113,6 +113,38 @@ a {
   color: darkslategray;
 }
 
+#location {
+  border-radius: 5px;
+  transition: all 200ms ease-in;
+  border: none;
+  padding: 5px;
+}
+
+#location:hover {
+}
+
+#search-button {
+  border-radius: 5px;
+  background-color: #212529;
+  color: lightgray;
+  border: none;
+  padding: 5px 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 200ms ease-in;
+}
+
+#search-button:hover {
+  background-color: #464f56;
+}
+
+#current {
+  position: relative;
+  left: 35px;
+}
+
+#current:hover {
+}
+
 #celsius:hover {
   cursor: pointer;
   color: darkslategray;
@@ -136,9 +168,4 @@ a {
   text-decoration: underline;
   color: blue;
   font-size: 12px;
-}
-
-#current {
-  position: relative;
-  left: 35px;
 }
