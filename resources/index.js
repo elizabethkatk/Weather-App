@@ -149,3 +149,38 @@ celsiusLink.addEventListener("click", showCelsius);
 let celsiusTemperature = null;
 
 defaultSearch();
+
+// Five Day //
+function showForecast() {
+  let forecast = document.querySelector(".five-day");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tues", "Wed", "Thurs", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class='row'>
+    <div class="col-4 days">
+              <p>${day}</p>
+            </div>
+            <div class="col-3 temps">
+              <p>
+                <strong>89°</strong> / 73°
+                <i class="fa fa-solid fa fa-cloud"></i>
+              </p>
+            </div>
+            <div class="col-2 dew-point">
+              <p><i class="fa-solid fa-droplet"></i> 25%</p>
+            </div>
+            <div class="col-3 wind">
+              <p><i class="fa-solid fa-wind"></i> 7 MPH</p>
+            </div>
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecast.innerHTML = forecastHTML;
+}
+
+showForecast();
