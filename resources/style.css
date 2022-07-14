@@ -99,6 +99,10 @@ a {
   text-align: center;
 }
 
+.dew-point {
+  padding: 10px 0 5px 20px;
+}
+
 .footer {
   font-size: 12px;
 }
@@ -120,9 +124,6 @@ a {
   padding: 5px;
 }
 
-#location:hover {
-}
-
 #search-button {
   border-radius: 5px;
   background-color: #212529;
@@ -140,9 +141,6 @@ a {
 #current {
   position: relative;
   left: 35px;
-}
-
-#current:hover {
 }
 
 #celsius:hover {
