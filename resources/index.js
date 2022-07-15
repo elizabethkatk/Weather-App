@@ -158,37 +158,56 @@ let celsiusTemperature = null;
 defaultSearch();
 
 // Five Day //
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+  return days[day];
+}
+
 function showForecast(response) {
   console.log(response.data.daily);
-  let forecast = document.querySelector(".five-day");
+  let forecast = response.data.daily;
+  let fiveDay = document.querySelector(".five-day");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Tues", "Wed", "Thurs", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class='row'>
-    <div class="col-4 days">
-              <p>${day}</p>
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class='row'>
+    <div class="col-3 days">
+              <p>${formatDay(forecastDay.dt)}</p>
             </div>
-            <div class="col-3 temps">
+            <div class="col-4 temps">
               <p>
-                <strong>89°</strong> / 73°
-                <i class="fa fa-solid fa fa-cloud"></i>
+                <strong>${Math.round(
+                  forecastDay.temp.max
+                )}°</strong> / ${Math.round(forecastDay.temp.min)}°
+                <img src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" alt="" />
               </p>
             </div>
             <div class="col-2 dew-point">
-              <p><i class="fa-solid fa-droplet"></i> 25%</p>
+              <p><i class="fa-solid fa-droplet"></i> ${Math.round(
+                forecastDay.dew_point
+              )}%</p>
             </div>
             <div class="col-3 wind">
-              <p><i class="fa-solid fa-wind"></i> 7 MPH</p>
+              <p><i class="fa-solid fa-wind"></i> ${Math.round(
+                forecastDay.wind_speed
+              )} MPH</p>
             </div>
             </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
 
-  forecast.innerHTML = forecastHTML;
+  fiveDay.innerHTML = forecastHTML;
 }
 
 showForecast();
