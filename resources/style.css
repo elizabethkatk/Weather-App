@@ -63,9 +63,9 @@ a {
 }
 
 .temp-mode {
-  font-size: 14px;
+  font-size: 18px;
   position: relative;
-  bottom: 10px;
+  bottom: 8px;
   font-weight: bold;
 }
 
@@ -141,16 +141,6 @@ a {
 #current {
   position: relative;
   left: 35px;
-}
-
-#celsius:hover {
-  cursor: pointer;
-  color: darkslategray;
-}
-
-#fahrenheit:hover {
-  cursor: pointer;
-  color: darkslategray;
 }
 
 #divider {
