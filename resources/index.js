@@ -105,7 +105,6 @@ function showTemp(response) {
   highTemp.innerHTML = Math.round(response.data.main.temp_max);
   let lowTemp = document.querySelector(".min-temp");
   lowTemp.innerHTML = Math.round(response.data.main.temp_min);
-  console.log(response);
 
   getForecast(response.data.coord);
 }
@@ -140,7 +139,6 @@ function formatDay(timestamp) {
 }
 
 function showForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let fiveDay = document.querySelector(".five-day");
 
