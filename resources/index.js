@@ -34,6 +34,7 @@ let day = days[now.getDay()];
 
 function formatDate() {
   return `${day}, ${month} ${date}`;
+  console.log(now.getDate());
 }
 
 let currentDate = document.querySelector(".date");
