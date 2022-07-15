@@ -77,6 +77,11 @@ function searchLocale(event) {
   axios.get(apiUrl).then(showTemp);
 }
 
+function getForecast(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showForecast);
+}
+
 function showTemp(response) {
   celsiusTemperature = response.data.main.temp;
   let temperature = document.querySelector(".temp");
@@ -103,6 +108,8 @@ function showTemp(response) {
   let lowTemp = document.querySelector(".min-temp");
   lowTemp.innerHTML = Math.round(response.data.main.temp_min);
   console.log(response);
+
+  getForecast(response.data.coord);
 }
 
 function findPosition(event) {
@@ -151,7 +158,8 @@ let celsiusTemperature = null;
 defaultSearch();
 
 // Five Day //
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector(".five-day");
 
   let forecastHTML = `<div class="row">`;
